@@ -78,7 +78,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
     replier.reply('[ ¿도움말? ]\n'+allsee+'<명령어 리스트>\n;주가\n;주가재설정\n;주가강제변동\n;?x?\n;code\n;주가랜덤설정\n\n<패치노트>\n1.";code",";주가랜덤설정"명령어가 추가되었습니다.');
   }
   if (msg == ';code') {
-    replier.reply('');
+    replier.reply('https://bit.ly/3ON1onn');
   }
   if (msg == ';주가랜덤설정') {
     if (ZrandomTime > 0) {
