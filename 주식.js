@@ -78,7 +78,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
     }
   }
   if (msg == ';도움말'||msg == ';help'||msg == ';?') {
-    replier.reply('[ ¿도움말? ]\n'+allsee+'<명령어 리스트>\n;주가\n;주가재설정\n;주가강제변동\n;?x?\n;code\n;주가랜덤설정\n;안녕\n\n<패치노트>\n1.";안녕"명령어가 추가되었습니다.');
+    replier.reply('[ ¿도움말? ]\n'+allsee+'<명령어 리스트>\n;주가\n;주가재설정\n;주가강제변동\n;?x?\n;code\n;주가랜덤설정\n;안녕\n;EN+Num\n\n<패치노트>\n1.";안녕",";EN+Num"명령어가 추가되었습니다.');
   }
   if (msg == ';code') {
     replier.reply('https://bit.ly/3ON1onn');
@@ -101,11 +101,10 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
     replier.reply(sender+'님 안녕하세요!');
   }
   if (msg == ';EN+Num') {
-    let Num = randomNum[Math.floor((Math.random() * 10))];
-    let Num2 = randomNum[Math.floor((Math.random() * 10))];
+    let Num = str(randomNum[Math.floor((Math.random() * 10))]);
+    let Num2 = str(randomNum[Math.floor((Math.random() * 10))]);
     let En = EN[Math.floor((Math.random() * 26))];
     let En2 = EN[Math.floor((Math.random() * 26))];
-    str(Num, Num2);
     replier.reply(Num + Num2 + En + En2);
   }
 }
