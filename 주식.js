@@ -4,6 +4,8 @@ const Ad = ['3.141592653589793238462643383279502884197169399375105820974944...',
 var allsee = new Array(1000).join(String.fromCharCode(847));
 const ECFDo = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 const TREo = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+const EN = [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z,];
+const randomNum = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 /**
  * (string) room
@@ -97,6 +99,14 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
   }
   if (msg == ';안녕') {
     replier.reply(sender+'님 안녕하세요!');
+  }
+  if (msg == ';EN+Num') {
+    let Num = randomNum[Math.floor((Math.random() * 10))];
+    let Num2 = randomNum[Math.floor((Math.random() * 10))];
+    let En = EN[Math.floor((Math.random() * 26))];
+    let En2 = EN[Math.floor((Math.random() * 26))];
+    str(Num, Num2);
+    replier.reply(Num + Num2 + En + En2);
   }
 }
 
