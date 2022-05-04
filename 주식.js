@@ -4,7 +4,7 @@ const Ad = ['3.141592653589793238462643383279502884197169399375105820974944...',
 var allsee = new Array(1000).join(String.fromCharCode(847));
 const ECFDo = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 const TREo = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-const EN = [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z,];
+const EN = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'X', 'Y', 'Z'];
 const randomNum = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 /**
@@ -94,7 +94,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
     let CEo = ECo*THo;
     Y = CEo;
     replier.reply('주가가 랜덤으로 설정되었습니다.\n설정된 주가는 "' + Y + '$"입니다.');
-    ZrandomTime = 1
+    ZrandomTime = 1;
     }
   }
   if (msg == ';안녕') {
