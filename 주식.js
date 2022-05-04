@@ -34,6 +34,7 @@ time_out_ii = setInterval(function() {
 }, 1000);
 Time_random = setInterval(function() {
   ZrandomTime = 0;
+  Time_randomii = 3600;
 }, 6000000);
 Time_random_out = setInterval(function() {
   Time_randomii = Time_randomii-1;
@@ -92,7 +93,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
     Y = CEo;
     replier.reply('주가가 랜덤으로 설정되었습니다.\n설정된 주가는 "' + Y + '$"입니다.');
     ZrandomTime = 1
-    Time_randomii = 3600;
     }
   }
 }
