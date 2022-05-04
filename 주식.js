@@ -95,6 +95,9 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
     ZrandomTime = 1
     }
   }
+  if (msg == ';안녕') {
+    replier.reply(sender+'님 안녕하세요!');
+  }
 }
 
 function onStart(activity) {}
