@@ -101,8 +101,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
     replier.reply(sender+'님 안녕하세요!');
   }
   if (msg == ';EN+Num') {
-    let Num = randomNum[Math.floor((Math.random() * 10))];
-    let Num2 = randomNum[Math.floor((Math.random() * 10))];
+    let Num = String(randomNum[Math.floor((Math.random() * 10))]);
+    let Num2 = String(randomNum[Math.floor((Math.random() * 10))]);
     let En = EN[Math.floor((Math.random() * 26))];
     let En2 = EN[Math.floor((Math.random() * 26))];
     replier.reply(Num + Num2 + En + En2);
