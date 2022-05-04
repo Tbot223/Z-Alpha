@@ -7,6 +7,7 @@ https://bit.ly/3KJYuMG
 If you need further explanation please follow the explanation in the link below
 https://bit.ly/3y9Fa9f
 
+
 # KR
 이 코드는 한국 메신저 카카오톡을 위해 만들어졌습니다. 다른 앱에서는 작동하지 않을 수 있습니다.
 
