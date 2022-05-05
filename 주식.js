@@ -57,6 +57,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
   if (msg == ';주가재설정'){
     let To = 10;
     Y = To;
+    FCab = 0;
   }
   if (msg == ';?x?') {
     let Dm = [1,2,3,4,5,6,7,8,9,10];
@@ -73,12 +74,12 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
     Y = Zo;
     Zb = 1;
     replier.reply('주가가 강제 변동 되었습니다.');
-    } else if(Zb == 0) {
+    } else if(Zb == 1) {
       replier.reply('주가 강제 변동은 자동으로 주가가 변동된후 1회만 실행할수있습니다.');
     }
   }
   if (msg == ';도움말'||msg == ';help'||msg == ';?') {
-    replier.reply('[ ¿도움말? ]\n'+allsee+'<명령어 리스트>\n;주가\n;주가재설정\n;주가강제변동\n;?x?\n;code\n;주가랜덤설정\n;안녕\n;EN+Num\n\n<패치노트>\n1.";안녕",";EN+Num"명령어가 추가되었습니다.');
+    replier.reply('[ ¿도움말? ]\n'+allsee+'\n<명령어 리스트>\n;가입\n;주가\n;내정보\n;구매\n;주가강제변동\n;주가랜덤설정\n;주가재설정\n;code\n;안녕\n;EN+Num\n;?x?\n\n<패치노트>\n1.";가입",";구매",";내정보"명령어가 추가되었습니다.\n2.명령어 순서가 "추가된 날짜 -> 중요도" 순서로 변경되었습니다.');
   }
   if (msg == ';code') {
     replier.reply('https://bit.ly/3ON1onn');
@@ -107,6 +108,40 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
     let En2 = EN[Math.floor((Math.random() * 26))];
     replier.reply(Num + Num2 + En + En2);
   }
+  try {
+    var joinbot = DataBase.getDataBase('Zo가입리스트001').split('\n');
+  }catch(e) {
+    var joinbot = [''];
+  }
+  if (msg == ';가입') {
+    if (joinbot.includes(sender)) {
+      replier.reply('이미 가입하셨습니다.');
+      return ;
+    } else if (sender.includes('\n')||sender.includes('@')||sender.includes('\'')) {
+      replier.reply('일부 특수문자가 포함된 닉네임은 가입이 불가능합니다.');
+      return ;
+    } else
+    DataBase.setDataBase('Zo가입리스트001', DataBase.getDataBase('Zo가입리스트001')+'\n'+sender);
+    setting(sender);
+    replier.reply('성공적으로 등록되었습니다.');
+    return ;
+  }
+  if (msg == ';내정보') {
+    show_important(sender, replier);
+  }
+  if (msg == ';구매') {
+    money = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
+    ZZuo = Number(DataBase.getDataBase('Z '+sender+ 'is Z'));
+    if (money < Y) {
+      replier.reply('돈이 부족합니다. - 현재 잔액 : ' + money);
+    } else if(money > Y) {
+      DataBase.setDataBase('Z '+sender+ 'is money', money-Y);
+      DataBase.setDataBase('Z '+sender+ 'is Z', ZZuo+1);
+      money = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
+      ZZuo = Number(DataBase.getDataBase('Z '+sender+ 'is Z'));
+      replier.reply('성공적으로 구매되었습니다. \n 잔액 : ' + money + '\n보유한 주식 개수 : ' + ZZuo);
+    }
+  }
 }
 
 function onStart(activity) {}
@@ -116,3 +151,15 @@ function onResume(activity) {}
 function onPause(activity) {}
 
 function onStop(activity) {}
+
+function setting(sender) {
+  DataBase.setDataBase('Z '+sender+ 'is money', '20');
+  DataBase.setDataBase('Z '+sender+ 'is Z', '1');
+}
+
+function show_important(sender, replier) {
+  text = '¤돈 : ' +DataBase.getDataBase('Z '+sender+ 'is money')+'$';
+  teet = '¤주식 : ' +DataBase.getDataBase('Z '+sender+ 'is Z')+'개';
+
+  replier.reply('[ ' + sender + '님의 정보 ]\n' + text + '\n' + teet);
+}
