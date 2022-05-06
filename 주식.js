@@ -22,6 +22,7 @@ setZ = setTimeout(function() {
   Timeii = 300;
   Time_randomii = 3600;
   ZrandomTime = 0;
+  Zb = 0;
 }, 10);
 time_out = setInterval(function() {
   Ro = randomN[Math.floor((Math.random() * 9))];
