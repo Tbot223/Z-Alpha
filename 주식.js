@@ -163,7 +163,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
       replier.reply('보유한 주식의 개수가 0개입니다.');
     }
   } 
-  if (msg == ';전채판매') {
+  if (msg == ';전체판매') {
     if (ZZuo > 0) {
       let tpor = Number(DataBase.getDataBase('Z '+sender+ 'is Z'));
       let tpoe = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
