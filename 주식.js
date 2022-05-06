@@ -181,5 +181,5 @@ function show_important(sender, replier) {
   text = '¤돈 : ' +DataBase.getDataBase('Z '+sender+ 'is money')+'$';
   teet = '¤주식 : ' +DataBase.getDataBase('Z '+sender+ 'is Z')+'개';
 
-  replier.reply('[ ' + sender + '님의 정보 ]\n' + text + '$\n' + teet + '개');
+  replier.reply('[ ' + sender + '님의 정보 ]\n' + text + '\n' + teet);
 }
