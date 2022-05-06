@@ -16,6 +16,7 @@ const randomNum = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
  * (string) imageDB.getProfileBase64()
  * (string) packageName
  */
+
 setZ = setTimeout(function() {
   Y = 10;
   FCab = 0;
@@ -162,6 +163,19 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
       replier.reply('보유한 주식의 개수가 0개입니다.');
     }
   } 
+  if (msg == ';전채판매') {
+    if (ZZuo > 0) {
+      let tpor = Number(DataBase.getDataBase('Z '+sender+ 'is Z'));
+      let tpoe = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
+      money = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
+      KJo = tpoe*Y;
+      DataBase.setDataBase('Z '+sender+ 'is money', money+KJo);
+      DataBase.setDataBase('Z '+sender+ 'is Z', 0);
+      replier.reply('성공적으로 판매되었습니다.');
+    } else if (ZZuo == 0) {
+      replier.reply('보유한 주식의 개수가 0입미다.');
+    }
+  }
 }
 
 function onStart(activity) {}
