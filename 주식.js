@@ -140,6 +140,12 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
       money = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
       ZZuo = Number(DataBase.getDataBase('Z '+sender+ 'is Z'));
       replier.reply('성공적으로 구매되었습니다. \n 잔액 : ' + money + '\n보유한 주식 개수 : ' + ZZuo);
+    } else if(money == Y) {
+      DataBase.setDataBase('Z '+sender+ 'is money', money-Y);
+      DataBase.setDataBase('Z '+sender+ 'is Z', ZZuo+1);
+      money = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
+      ZZuo = Number(DataBase.getDataBase('Z '+sender+ 'is Z'));
+      replier.reply('성공적으로 구매되었습니다. \n 잔액 : ' + money + '\n보유한 주식 개수 : ' + ZZuo);
     }
   }
 }
