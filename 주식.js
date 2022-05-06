@@ -74,7 +74,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
     Y = Zo;
     Zb = 1;
     replier.reply('주가가 강제 변동 되었습니다.');
-    } else if(Zb == 1) {
+    } else if (Zb == 1) {
       replier.reply('주가 강제 변동은 자동으로 주가가 변동된후 1회만 실행할수있습니다.');
     }
   }
@@ -134,13 +134,13 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
     ZZuo = Number(DataBase.getDataBase('Z '+sender+ 'is Z'));
     if (money < Y) {
       replier.reply('돈이 부족합니다. - 현재 잔액 : ' + money);
-    } else if(money > Y) {
+    } else if (money > Y) {
       DataBase.setDataBase('Z '+sender+ 'is money', money-Y);
       DataBase.setDataBase('Z '+sender+ 'is Z', ZZuo+1);
       money = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
       ZZuo = Number(DataBase.getDataBase('Z '+sender+ 'is Z'));
       replier.reply('성공적으로 구매되었습니다. \n 잔액 : ' + money + '\n보유한 주식 개수 : ' + ZZuo);
-    } else if(money == Y) {
+    } else if (money == Y) {
       DataBase.setDataBase('Z '+sender+ 'is money', money-Y);
       DataBase.setDataBase('Z '+sender+ 'is Z', ZZuo+1);
       money = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
@@ -148,6 +148,19 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
       replier.reply('성공적으로 구매되었습니다. \n 잔액 : ' + money + '\n보유한 주식 개수 : ' + ZZuo);
     }
   }
+  if (msg == ';판매') {
+    money = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
+    ZZuo = Number(DataBase.getDataBase('Z '+sender+ 'is Z'));
+    if (ZZuo > 0) {
+      DataBase.setDataBase('Z '+sender+ 'is money', money+Y);
+      DataBase.setDataBase('Z '+sender+ 'is Z', ZZuo-1);
+      money = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
+      ZZuo = Number(DataBase.getDataBase('Z '+sender+ 'is Z'));
+      replier.reply('성공적으로 구매되었습니다. \n 잔액 : ' + money + '\n보유한 주식 개수 : ' + ZZuo);
+    } else if (ZZuo == 0) {
+      replier.reply('보유한 주식의 개수가 0개입니다.');
+    }
+  } 
 }
 
 function onStart(activity) {}
