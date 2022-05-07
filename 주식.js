@@ -176,6 +176,9 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
       replier.reply('보유한 주식의 개수가 0입미다.');
     }
   }
+  if (msg == ';어쩔티비') {
+    replier.reply('저쩔티비');
+  }
 }
 
 function onStart(activity) {}
