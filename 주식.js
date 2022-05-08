@@ -81,7 +81,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
     }
   }
   if (msg == ';도움말'||msg == ';help'||msg == ';?') {
-    replier.reply('[ ¿도움말? ]\n'+allsee+'\n<명령어 리스트>\n;가입\n;주가\n;내정보\n;구매\n;판매\n;주가강제변동\n;주가랜덤설정\n;주가재설정\n;code\n;안녕\n;EN+Num\n;?x?\n\n<패치노트>\n1.";가입",";구매",";내정보",";판매"명령어가 추가되었습니다.\n2.명령어 순서가 "추가된 날짜 -> 중요도" 순서로 변경되었습니다.');
+    replier.reply('[ ¿도움말? ]\n'+allsee+'\n<명령어 리스트>\n;가입\n;주가\n;내정보\n;구매\n;판매\n;일괄판매\n;주가강제변동\n;주가랜덤설정\n;주가재설정\n;code\n;안녕\n;EN+Num\n;?x?\n\n<패치노트>\n1.";가입",";구매",";내정보",";판매",";일괄판매" 명령어가 추가되었습니다.\n2.명령어 순서가 "추가된 날짜 -> 중요도" 순서로 변경되었습니다.');
   }
   if (msg == ';code') {
     replier.reply('https://bit.ly/3ON1onn');
