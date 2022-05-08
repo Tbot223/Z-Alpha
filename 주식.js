@@ -178,14 +178,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
   if (msg == ';어쩔티비') {
     replier.reply('저쩔티비');
   }
-  if (msg == ';일괄구매') {
-    money = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
-    ZZuo = Number(DataBase.getDataBase('Z '+sender+ 'is Z'));
-    for (let i = money; i > Y;) {
-      DataBase.setDataBase('Z '+sender+ 'is money', money-Y);
-      DataBase.setDataBase('Z '+sender+ 'is Z', ZZuo+1);
-    }
-  }
 }
 
 function onStart(activity) {}
