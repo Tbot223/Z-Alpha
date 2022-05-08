@@ -163,21 +163,28 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
       replier.reply('보유한 주식의 개수가 0개입니다.');
     }
   } 
-  if (msg == ';전체판매') {
+  if (msg == ';일괄판매') {
+    money = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
+    ZZuo = Number(DataBase.getDataBase('Z '+sender+ 'is Z'));
     if (ZZuo > 0) {
-      let tpor = Number(DataBase.getDataBase('Z '+sender+ 'is Z'));
-      let tpoe = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
-      money = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
-      KJo = tpoe*Y;
+      KJo = ZZuo*Y;
       DataBase.setDataBase('Z '+sender+ 'is money', money+KJo);
       DataBase.setDataBase('Z '+sender+ 'is Z', 0);
       replier.reply('성공적으로 판매되었습니다.');
     } else if (ZZuo == 0) {
-      replier.reply('보유한 주식의 개수가 0입미다.');
+      replier.reply('보유한 주식의 개수가 0개 입니다.');
     }
   }
   if (msg == ';어쩔티비') {
     replier.reply('저쩔티비');
+  }
+  if (msg == ';일괄구매') {
+    money = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
+    ZZuo = Number(DataBase.getDataBase('Z '+sender+ 'is Z'));
+    for (let i = money; i > Y;) {
+      DataBase.setDataBase('Z '+sender+ 'is money', money-Y);
+      DataBase.setDataBase('Z '+sender+ 'is Z', ZZuo+1);
+    }
   }
 }
 
