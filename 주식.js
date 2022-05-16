@@ -81,7 +81,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
     }
   }
   if (msg == ';도움말'||msg == ';help'||msg == ';?') {
-    replier.reply('[ ¿도움말? ]\n'+allsee+'\n<명령어 리스트>\n;가입\n;주가\n;내정보\n;구매\n;판매\n;일괄판매\n;주가강제변동\n;주가랜덤설정\n;주가재설정\n;code\n;안녕\n;EN+Num\n;?x?\n\n<패치노트>\n1.";내정보",";구매",";판매",";일괄판매" 명령어가 가입후 사용할수 있도록 변경되었습니다.');
+    replier.reply('[ ¿도움말? ]\n'+allsee+'\n<명령어 리스트>\n;가입\n;주가\n;내정보\n;구매\n;판매\n;일괄판매\n;주가강제변동\n;주가랜덤설정\n;주가재설정\n;code\n;안녕\n;EN+Num\n;?x?\n\n<패치노트>\n1.";구매"명령어가 ";구매 8" 이런식으로 쓸수 있게 되었습니다.(한번에 최대 10개 구매 가능)');
   }
   if (msg == ';code') {
     replier.reply('https://bit.ly/3ON1onn');
@@ -135,27 +135,44 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
       replier.reply('가입을 하고 사용해주세요. (명령어 : ;가입)');
     }
   }
-  if (msg == ';구매') {
-    if (joinbot.includes(sender)) {
-      money = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
-      ZZuo = Number(DataBase.getDataBase('Z '+sender+ 'is Z'));
-      if (money < Y) {
-        replier.reply('돈이 부족합니다. - 현재 잔액 : ' + money);
-      } else if (money > Y) {
-        DataBase.setDataBase('Z '+sender+ 'is money', money-Y);
-        DataBase.setDataBase('Z '+sender+ 'is Z', ZZuo+1);
-        money = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
-        ZZuo = Number(DataBase.getDataBase('Z '+sender+ 'is Z'));
-        replier.reply('성공적으로 구매되었습니다. \n 잔액 : ' + money + '\n보유한 주식 개수 : ' + ZZuo);
-      } else if (money == Y) {
-        DataBase.setDataBase('Z '+sender+ 'is money', money-Y);
-        DataBase.setDataBase('Z '+sender+ 'is Z', ZZuo+1);
-        money = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
-        ZZuo = Number(DataBase.getDataBase('Z '+sender+ 'is Z'));
-        replier.reply('성공적으로 구매되었습니다. \n 잔액 : ' + money + '\n보유한 주식 개수 : ' + ZZuo);
-      }
+  var message = msg.split(' ');
+  if (message[0] == ';구매') {
+    money = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
+    var cutting = msg.replace(';구매 ', '');
+    if (isNaN(Number(cutting))) {
+      replier.reply('숫자를 입력해주세요.');
+      return ;
+    } else if (Number(cutting)<0) {
+      replier.reply('음수로 설정하실수 없습니다');
+      return ;
+    } else if (Number(cutting)>money) {
+      replier.reply('돈이 부족합니다.');
+      return ;
+    } else if (Number(cutting)>10){
+      replier.reply('주식은 한번에 10개 이하로만 거래 가능합니다.');
     } else {
-      replier.reply('가입을 하고 사용해주세요. (명령어 : ;가입)');
+      if (joinbot.includes(sender)) {
+        money = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
+        ZZuo = Number(DataBase.getDataBase('Z '+sender+ 'is Z'));
+        var ZYPo = Y*message[1];
+        if (money < ZYPo) {
+          replier.reply('돈이 부족합니다. - 현재 잔액 : ' + money);
+        } else if (money > ZYPo) {
+          DataBase.setDataBase('Z '+sender+ 'is money', money-ZYPo);
+          DataBase.setDataBase('Z '+sender+ 'is Z', ZZuo+ZYPO);
+          money = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
+          ZZuo = Number(DataBase.getDataBase('Z '+sender+ 'is Z'));
+          replier.reply('성공적으로 구매되었습니다. \n 잔액 : ' + money + '\n보유한 주식 개수 : ' + ZZuo);
+        } else if (money == ZYPo) {
+          DataBase.setDataBase('Z '+sender+ 'is money', money-ZYPo);
+          DataBase.setDataBase('Z '+sender+ 'is Z', ZZuo+ZYPo);
+          money = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
+          ZZuo = Number(DataBase.getDataBase('Z '+sender+ 'is Z'));
+          replier.reply('성공적으로 구매되었습니다. \n 잔액 : ' + money + '\n보유한 주식 개수 : ' + ZZuo);
+        }
+      } else {
+        replier.reply('가입을 하고 사용해주세요. (명령어 : ;가입)');
+      }
     }
   }
   if (msg == ';판매') {
