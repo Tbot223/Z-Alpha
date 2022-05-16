@@ -156,7 +156,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
         money = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
         ZZuo = Number(DataBase.getDataBase('Z '+sender+ 'is Z'));
         var ZYPo = Y*message[1];
-        var ZYPn = message[1];
+        var ZYPN = Number(message[1]);
         if (money < ZYPo) {
           replier.reply('돈이 부족합니다. - 현재 잔액 : ' + money);
         } else if (money > ZYPo) {
