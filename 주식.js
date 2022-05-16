@@ -156,17 +156,18 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
         money = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
         ZZuo = Number(DataBase.getDataBase('Z '+sender+ 'is Z'));
         var ZYPo = Y*message[1];
+        var ZYPn = message[1];
         if (money < ZYPo) {
           replier.reply('돈이 부족합니다. - 현재 잔액 : ' + money);
         } else if (money > ZYPo) {
           DataBase.setDataBase('Z '+sender+ 'is money', money-ZYPo);
-          DataBase.setDataBase('Z '+sender+ 'is Z', ZZuo+ZYPO);
+          DataBase.setDataBase('Z '+sender+ 'is Z', ZZuo+ZYPn);
           money = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
           ZZuo = Number(DataBase.getDataBase('Z '+sender+ 'is Z'));
           replier.reply('성공적으로 구매되었습니다. \n 잔액 : ' + money + '\n보유한 주식 개수 : ' + ZZuo);
         } else if (money == ZYPo) {
           DataBase.setDataBase('Z '+sender+ 'is money', money-ZYPo);
-          DataBase.setDataBase('Z '+sender+ 'is Z', ZZuo+ZYPo);
+          DataBase.setDataBase('Z '+sender+ 'is Z', ZZuo+ZYPn);
           money = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
           ZZuo = Number(DataBase.getDataBase('Z '+sender+ 'is Z'));
           replier.reply('성공적으로 구매되었습니다. \n 잔액 : ' + money + '\n보유한 주식 개수 : ' + ZZuo);
