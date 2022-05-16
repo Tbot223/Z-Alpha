@@ -150,6 +150,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
       return ;
     } else if (Number(cutting)>10){
       replier.reply('주식은 한번에 10개 이하로만 거래 가능합니다.');
+      return ;
     } else {
       if (joinbot.includes(sender)) {
         money = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
