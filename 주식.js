@@ -148,7 +148,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
     } else if (Number(cutting)>money) {
       replier.reply('돈이 부족합니다.');
       return ;
-    } else if (Number(cutting)>10){
+    } else if (Number(cutting)>10) {
       replier.reply('주식은 한번에 10개 이하로만 거래 가능합니다.');
       return ;
     } else {
@@ -156,7 +156,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
         money = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
         ZZuo = Number(DataBase.getDataBase('Z '+sender+ 'is Z'));
         var ZYPo = Y*message[1];
-        var ZYPN = Number(message[1]);
+        var ZYPn = Number(message[1]);
         if (money < ZYPo) {
           replier.reply('돈이 부족합니다. - 현재 잔액 : ' + money);
         } else if (money > ZYPo) {
