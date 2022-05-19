@@ -233,7 +233,15 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
         let money1 = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
         let AD = Ad[Math.floor((Math.random() * 4))];
         replier.reply('[ '+sender+'님의 도박 결과 ]\n'+allsee+'\n¤돈 : '+money+' -> '+money1+'\n¤결과 : '+RGp+'\n¤투자금액 : '+cutting+'\n\n[ AD ]\n'+AD);
-        } else if (money < cutting) {
+        } else if (money == cutting) {
+          let RGt = Ch[Math.floor((Math.random() * 11))];
+          let RGp = Number(RGt*cutting);
+          DataBase.setDataBase('Z '+sender+ 'is money', money-cutting);
+          DataBase.setDataBase('Z '+sender+ 'is money', money+RGp);
+          let money1 = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
+          let AD = Ad[Math.floor((Math.random() * 4))];
+          replier.reply('[ '+sender+'님의 도박 결과 ]\n'+allsee+'\n¤돈 : '+money+' -> '+money1+'\n¤결과 : '+RGp+'\n¤투자금액 : '+cutting+'\n\n[ AD ]\n'+AD);
+        }else if (money < cutting) {
           replier.reply('돈이 부족합니다.');
         }
       }
