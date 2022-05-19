@@ -7,6 +7,7 @@ const TREo = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 const EN = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 const randomNum = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 const Ch = [-3, -2.5, -2, -1.5, -1, 0, 0.5, 1, 1.5, 2, 2.5, 3];
+const TIme_outBa = ['🌘 10초 감소! 🌒', '⭐ 25초 감소! ⭐', '🌗 50초 감소! 🌓', '🌈 Infinity초 감소 라고할뻔! 🌈\n75초 감소', '🔥 100초 감소! 💧', '⌛ 200초 감소! ⌛', '⏳ 200초 감소! ⏳'];
 
 /**
  * (string) room
@@ -25,17 +26,19 @@ setZ = setTimeout(function() {
   Time_randomii = 3600;
   ZrandomTime = 0;
   Zb = 0;
+  OOT = 0;
 }, 10);
 time_out = setInterval(function() {
+  if (Timeii == 0) {
   Ro = randomN[Math.floor((Math.random() * 9))];
   FCab = Ro;
   let Zo = Ro + Y;
   Y = Zo;
   Zb = 0;
   Timeii = 300;
-}, 300000);
-time_out_ii = setInterval(function() {
-  Timeii = Timeii-1;
+  } else {
+    Timeii = Timeii-1;
+  }
 }, 1000);
 Time_random = setInterval(function() {
   ZrandomTime = 0;
@@ -245,6 +248,40 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
           replier.reply('돈이 부족합니다.');
         }
       }
+    }
+  }
+  if (msg == ';단축') {
+    if (OOT == 0) {
+      var dustksdee = TIme_outBa[Math.floor((Math.random() * 7))];
+      let gkgkgk = Ad[Math.floor((Math.random() * 4))];
+      let streee = '\n\n[ AD ]\n';
+      var setrrrr = dustksdee+streee+gkgkgk;
+      let a = TIme_outBa[0];
+      let b = TIme_outBa[1];
+      let c = TIme_outBa[2];
+      let d = TIme_outBa[3];
+      let e = TIme_outBa[4];
+      let f = TIme_outBa[5];
+      let g = TIme_outBa[6];
+      replier.reply(setrrrr);
+      OOT = 1;
+      if (dustksdee == a) {
+        Timeii = Timeii-10;
+      } else if (dustksdee == b) {
+        Timeii = Timeii-25;
+      } else if (dustksdee == c) {
+        Timeii = Timeii-50;
+      } else if (dustksdee == d) {
+        Timeii = Timeii-75;
+      } else if (dustksdee == e) {
+        Timeii = Timeii-100;
+      } else if (dustksdee == f) {
+        Timeii = Timeii-200;
+      } else if (dustksdee == g) {
+        Timeii = Timeii-300;
+      }
+    } else if (OOT == 1) {
+      replier.reply('단축은 주가가 변동된후 1번만 가능합니다.');
     }
   }
 }
