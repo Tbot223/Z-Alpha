@@ -221,9 +221,9 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
       replier.reply('갠톡에서 해주세요');
     } else if (isGroupChat == false) {
       if (isNaN(Number(cutting))) {
-        replier.reply('숫자를 입력해주세요.')
+        replier.reply('숫자를 입력해주세요.');
       } else if (cutting < 0) {
-        replier.reply('음수로 설정하실수 없습니다.')
+        replier.reply('음수로 설정하실수 없습니다.');
       } else {
         if (money > cutting) {
         let RGt = Ch[Math.floor((Math.random() * 11))];
@@ -232,7 +232,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
         DataBase.setDataBase('Z '+sender+ 'is money', money+RGp);
         let money1 = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
         let AD = Ad[Math.floor((Math.random() * 4))];
-        replier.reply('[ '+sender+'님의 도박 결과 ]\n'+allsee+'\n¤돈 : '+money1+' -> '+money+'\n¤결과 : '+RGp+'\n¤투자금액 : '+cutting+'\n\n[ AD ]\n'+AD);
+        replier.reply('[ '+sender+'님의 도박 결과 ]\n'+allsee+'\n¤돈 : '+money+' -> '+money1+'\n¤결과 : '+RGp+'\n¤투자금액 : '+cutting+'\n\n[ AD ]\n'+AD);
         } else if (money < cutting) {
           replier.reply('돈이 부족합니다.');
         }
