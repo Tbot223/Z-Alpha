@@ -6,6 +6,7 @@ const ECFDo = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 const TREo = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 const EN = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 const randomNum = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+const Ch = [-3, -2.5, -2, -1.5, -1, 0, 0.5, 1, 1.5, 2, 2.5, 3];
 
 /**
  * (string) room
@@ -212,6 +213,31 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
   }
   if (msg == ';어쩔티비') {
     replier.reply('저쩔티비');
+  }
+  if (message[0] == ';도박') {
+    cutting = msg.replace(';도박 ', '');
+    money = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
+    if (isGroupChat == true) {
+      replier.reply('갠톡에서 해주세요');
+    } else if (isGroupChat == false) {
+      if (isNaN(Number(cutting))) {
+        replier.reply('숫자를 입력해주세요.')
+      } else if (cutting < 0) {
+        replier.reply('음수로 설정하실수 없습니다.')
+      } else {
+        if (money > cutting) {
+        let RGt = Ch[Math.floor((Math.random() * 11))];
+        let RGp = Number(RGt*cutting);
+        DataBase.setDataBase('Z '+sender+ 'is money', money-cutting);
+        DataBase.setDataBase('Z '+sender+ 'is money', money+RGp);
+        let money1 = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
+        let AD = Ad[Math.floor((Math.random() * 4))];
+        replier.reply('[ '+sender+'님의 도박 결과 ]\n'+allsee+'\n¤돈 : '+money1+' -> '+money+'\n¤결과 : '+RGp+'\n¤투자금액 : '+cutting+'\n\n[ AD ]\n'+AD);
+        } else if (money < cutting) {
+          replier.reply('돈이 부족합니다.');
+        }
+      }
+    }
   }
 }
 
