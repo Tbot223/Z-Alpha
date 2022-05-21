@@ -35,9 +35,9 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
         replier.reply('관리자 권한을 봇 제작자에게 추가해달라고 요청하십시오.');
     }
   }
-  if (msg.includes(Flist)) {
+  if (Flist.includes(msg)) {
       if (roomlist.includes(room)) {
-        Number(rudrh = DataBase.getDataBase(sender+'의 경고 횟수'));
+        rudrh = Number(DataBase.getDataBase(sender+'의 경고 횟수'));
         DataBase.setDataBase(sender+'의 경고 횟수', rudrh+1);
         rudrh = DataBase.getDataBase(sender+'의 경고 횟수');
         replier.reply('[ 알림 ]'+allsee+'\n'+sender+'이가 규칙에 어긋나는 행동을 하였습니다.\n경고 횟수 : '+rudrh);
