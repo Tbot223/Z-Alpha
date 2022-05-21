@@ -36,7 +36,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
     }
   }
   if (msg.includes(Flist)) {
-      if (room.includes(roomlist)) {
+      if (roomlist.includes(room)) {
         rudrh = DataBase.getDataBase(sender+'의 경고 횟수');
         DataBase.setDataBase(sender+'의 경고 횟수', rudrh+1);
         rudrh = DataBase.getDataBase(sender+'의 경고 횟수');
