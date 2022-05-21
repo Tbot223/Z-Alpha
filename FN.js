@@ -20,6 +20,11 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
   }catch(e) {
       var Adminlist = [''];
   }
+  try {
+      var roomlist = DataBase.getDataBase('roomlist').split('\n');
+  }catch(e) {
+      var roomlist = [''];
+  }
   var message = msg.split(' ');
   if (message[0] == ';금지단어등록') {
       if (Adminlist.includes(sender)) {
