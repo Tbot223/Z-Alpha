@@ -37,7 +37,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
   }
   if (msg.includes(Flist)) {
       if (roomlist.includes(room)) {
-        rudrh = DataBase.getDataBase(sender+'의 경고 횟수');
+        Number(rudrh = DataBase.getDataBase(sender+'의 경고 횟수'));
         DataBase.setDataBase(sender+'의 경고 횟수', rudrh+1);
         rudrh = DataBase.getDataBase(sender+'의 경고 횟수');
         replier.reply('[ 알림 ]'+allsee+'\n'+sender+'이가 규칙에 어긋나는 행동을 하였습니다.\n경고 횟수 : '+rudrh);
