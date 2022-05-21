@@ -152,8 +152,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
     } else if (Number(cutting)>money) {
       replier.reply('돈이 부족합니다.');
       return ;
-    } else if (Number(cutting)>10) {
-      replier.reply('주식은 한번에 10개 이하로만 거래 가능합니다.');
+    } else if (Number(cutting)>100) {
+      replier.reply('주식은 한번에 100개 이하로만 거래 가능합니다.');
       return ;
     } else {
       if (joinbot.includes(sender)) {
