@@ -54,6 +54,11 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
   }catch(e) {
     var roomlist = [''];
   }
+  try {
+    var Adminlist = DataBase.getDataBase('Adminlist').split('\n');
+  }catch(e) {
+    var Adminlist = [''];
+  }
   if (roomlist.includes(room)) {
     if (msg == ';주가') {
       N = 0;
@@ -255,6 +260,17 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
         replier.reply('단축은 주가가 변동된후 1번만 가능합니다.');
       }
     }
+    if (message[0] == ';주가설정') {
+      if (Adminlist.includes(sender)) {
+        let cutting = msg.replace(';주가설정 ', '');
+      if (isNaN(Number(cutting))) {
+        replier.reply('숫자만 적어주세요.');
+      } else {
+        Y = cutting
+        replier.reply('주가가 '+cutting+'으로 설정되었습니다.');
+      }
+    }
+   }
   }
 }
 
