@@ -354,7 +354,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
             }catch(e) {
               var titlelist = [''];
             }
-            if (titlelist.includes(RkDk1)) {
+            if (titlelist.includes(RkDk5)) {
               replier.reply('칭호가 중복으로 뽑혔습니다. 50%를 돌려드리겠습니다.');
               DataBase.setDataBase('Z '+sender+ 'is money', money);
             } else {
