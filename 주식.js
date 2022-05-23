@@ -8,6 +8,17 @@ const EN = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N'
 const randomNum = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 const Ch = [-3, -2.5, -2, -1.5, -1, 0, 0.5, 1, 1.5, 2, 2.5, 3];
 const TIme_outBa = ['🌘 10초 감소! 🌒', '⭐ 25초 감소! ⭐', '🌗 50초 감소! 🌓', '🌈 Infinity초 감소 라고할뻔! 🌈\n75초 감소', '🔥 100초 감소! 💧', '⌛ 200초 감소! ⌛', '⏳ 200초 감소! ⏳'];
+const title1 = ['주린이', '빨리 빼!', '조사 중...', '회사가 망했어', '매수매도 타이밍 초짜', '여유자금=0원', '경제가 머죠?', '떨어짐 오늘 안자', '아이고ㅠ', '푼돈'];
+const title2 = ['🌋 화산 마스터 🌋', '🚦 신호등 🚦', '🌈 무지개 🌈', '💧 물과 불을 다루는 자 🔥', '§ See Truth §', 'ı Believe The Truth And Act ı', '⏱ Time Line ⏱', '🌘 The Moon 🌒','✅ 정답만 믿는자 ✅' ,'❎ 오답만 믿는자 ❎'];
+const title3 = ['ö Pig ö', '<\귀 여 미 />', '</커엽다\>', '<-| 멍충이 |->', '% 이사람 운 업대요 ㅋㅋ %', '_ 줘좸민의아니라고요 _', '🧊 아이스에이지 🧊', '</어쩔티비\>'];
+const title4 = ['⚔︎해적⚔︎', '☢︎방사능☢︎', '🕦🕥🕤🕘🕒 The World 🕣🕐🕝🕖🕢', '⛩ 차이나타운 ⛩', '🥑 Avocados from the Mexico 🥑', '☕ 갈땐 가더라도 커피 한잔은 괜찮잖아? ☕', '🍉 수밖 🍉'];
+const title5 = ['⚔️전쟁의 신 아레스⚔️', '☭블라디미르 레닌☭', '📈마스터 오브 코인📉', '📚지식의 신 토트📚', '🖥테크노 킹🖥', '🛸외계인🛸'];
+const titlerendomNum1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45];
+const titlerendomNum2 = [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70];
+const titlerendomNum3 = [71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85];
+const titlerendomNum4 = [86, 87, 88, 89, 90, 91, 92, 93, 94, 95];
+const titlerendomNum5 = [96, 97, 98, 99, 100];
+const titlerendomNum = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100];
 
 /**
  * (string) room
@@ -64,7 +75,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
       N = 0;
       if (Y > N) {
         let Kk = Ad[Math.floor((Math.random() * 4))];
-        replier.reply('[ 현재 주가 ]\n' + "'" + Y + "$' 입니다.\n변동폭 : " + FCab + '$\n다음 갱신까지 ' + Timeii + '초\n[ AD ] '+Kk);
+        replier.reply('[ 현재 주가 ]\n' + "'" + Y + "$' 입니다.\n변동폭 : " + FCab + '$\n\n다음 갱신까지 ' + Timeii + '초\n\n[ AD ]\n'+Kk);
       } else if(N > Y) {
         let To = 10;
         Y = To;
@@ -266,11 +277,173 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
       if (isNaN(Number(cutting))) {
         replier.reply('숫자만 적어주세요.');
       } else {
-        Y = cutting
+        Y = cutting;
         replier.reply('주가가 '+cutting+'으로 설정되었습니다.');
       }
+     }
     }
-   }
+    if (message[0] == ';칭호') {
+      let cutting = msg.replace(';칭호 ', '');
+      if (cutting == '목록') {
+        replier.reply('[ 칭호 목록 ]\n'+allsee+'\n일반 : '+title1+'\n\n고급 : '+title2+'\n\n희귀 : '+title3+'\n\n유일 : '+title4+'\n\n신화 : '+title5);
+      } else if (cutting == '구매') {
+        money = DataBase.getDataBase('Z '+sender+ 'is money');
+        if (money > 500) {
+          DataBase.setDataBase('Z '+sender+ 'is money', money-500);
+          let RkDk = titlerendomNum[Math.floor(Math.random() * 100)];
+          if (titlerendomNum1.includes(RkDk)) {
+            let RkDk1 = title1[Math.floor(Math.random() * 10)];
+            try {
+              var titlelist = DataBase.getDataBase('Z '+sender+ 'is title').split('\n');
+            }catch(e) {
+              var titlelist = [''];
+            }
+            if (titlelist.includes(RkDk1)) {
+              replier.reply('칭호가 중복으로 뽑혔습니다. 50%를 돌려드리겠습니다.');
+              DataBase.setDataBase('Z '+sender+ 'is money', money);
+            } else {
+            DataBase.setDataBase('Z '+sender+ 'is title', DataBase.getDataBase('Z '+sender+ 'is title')+'\n'+RkDk1);
+            replier.reply(sender+'님이 뽑으신 칭호는 "'+RkDk1+'" 입니다.');
+            }
+          } else if (titlerendomNum2.includes(RkDk)) {
+            let RkDk2 = title2[Math.floor(Math.random() * 10)];
+            try {
+              var titlelist = DataBase.getDataBase('Z '+sender+ 'is title').split('\n');
+            }catch(e) {
+              var titlelist = [''];
+            }
+            if (titlelist.includes(RkDk2)) {
+              replier.reply('칭호가 중복으로 뽑혔습니다. 50%를 돌려드리겠습니다.');
+              DataBase.setDataBase('Z '+sender+ 'is money', money)
+            } else {
+            DataBase.setDataBase('Z '+sender+ 'is title', DataBase.getDataBase('Z '+sender+ 'is title')+'\n'+RkDk2);
+            replier.reply(sender+'님이 뽑으신 칭호는 "'+RkDk2+'" 입니다.');
+            }
+          } else if (titlerendomNum3.includes(RkDk)) {
+            let RkDk3 = title3[Math.floor(Math.random() * 8)];
+            try {
+              var titlelist = DataBase.getDataBase('Z '+sender+ 'is title').split('\n');
+            }catch(e) {
+              var titlelist = [''];
+            }
+            if (titlelist.includes(RkDk3)) {
+              replier.reply('칭호가 중복으로 뽑혔습니다. 50%를 돌려드리겠습니다.');
+              DataBase.setDataBase('Z '+sender+ 'is money', money);
+            } else {
+            DataBase.setDataBase('Z '+sender+ 'is title', DataBase.getDataBase('Z '+sender+ 'is title')+'\n'+RkDk3);
+            replier.reply(sender+'님이 뽑으신 칭호는 "'+RkDk3+'" 입니다.');
+            }
+          } else if (titlerendomNum4.includes(RkDk)) {
+            let RkDk4 = title4[Math.floor(Math.random() * 7)];
+            try {
+              var titlelist = DataBase.getDataBase('Z '+sender+ 'is title').split('\n');
+            }catch(e) {
+              var titlelist = [''];
+            }
+            if (titlelist.includes(RkDk4)) {
+              replier.reply('칭호가 중복으로 뽑혔습니다. 50%를 돌려드리겠습니다.');
+              DataBase.setDataBase('Z '+sender+ 'is money', money);
+            } else {
+            DataBase.setDataBase('Z '+sender+ 'is title', DataBase.getDataBase('Z '+sender+ 'is title')+'\n'+RkDk4);
+            replier.reply(sender+'님이 뽑으신 칭호는 "'+RkDk4+'" 입니다.');
+            }
+          } else if (titlerendomNum5.includes(RkDk)) {
+             let RkDk5 = title5[Math.floor(Math.random() * 6)];
+             try {
+              var titlelist = DataBase.getDataBase('Z '+sender+ 'is title').split('\n');
+            }catch(e) {
+              var titlelist = [''];
+            }
+            if (titlelist.includes(RkDk1)) {
+              replier.reply('칭호가 중복으로 뽑혔습니다. 50%를 돌려드리겠습니다.');
+              DataBase.setDataBase('Z '+sender+ 'is money', money);
+            } else {
+             DataBase.setDataBase('Z '+sender+ 'is title', DataBase.getDataBase('Z '+sender+ 'is title')+'\n'+RkDk5);
+             replier.reply(sender+'님이 뽑으신 칭호는 "'+RkDk5+'" 입니다.');
+            }
+          }
+        } else if (money == 500) {
+           DataBase.setDataBase('Z '+sender+ 'is money', money-500);
+           let RkDk = titlerendomNum[Math.floor(Math.random() * 100)];
+            if (titlerendomNum1.includes(RkDk)) {
+              let RkDk1 = title1[Math.floor(Math.random() * 10)];
+              try {
+                var titlelist = DataBase.getDataBase('Z '+sender+ 'is title').split('\n');
+              }catch(e) {
+                var titlelist = [''];
+              }
+              if (titlelist.includes(RkDk1)) {
+                replier.reply('칭호가 중복으로 뽑혔습니다. 50%를 돌려드리겠습니다.');
+                DataBase.setDataBase('Z '+sender+ 'is money', money);
+              } else {
+              DataBase.setDataBase('Z '+sender+ 'is title', DataBase.getDataBase('Z '+sender+ 'is title')+'\n'+RkDk1);
+              replier.reply(sender+'님이 뽑으신 칭호는 "'+RkDk1+'" 입니다.');
+              }
+             } else if (titlerendomNum2.includes(RkDk)) {
+              let RkDk2 = title2[Math.floor(Math.random() * 10)];
+              try {
+                var titlelist = DataBase.getDataBase('Z '+sender+ 'is title').split('\n');
+              }catch(e) {
+                var titlelist = [''];
+              }
+              if (titlelist.includes(RkDk2)) {
+                replier.reply('칭호가 중복으로 뽑혔습니다. 50%를 돌려드리겠습니다.');
+                DataBase.setDataBase('Z '+sender+ 'is money', money)
+              } else {
+              DataBase.setDataBase('Z '+sender+ 'is title', DataBase.getDataBase('Z '+sender+ 'is title')+'\n'+RkDk2);
+              replier.reply(sender+'님이 뽑으신 칭호는 "'+RkDk2+'" 입니다.');
+              }
+             } else if (titlerendomNum3.includes(RkDk)) {
+              let RkDk3 = title3[Math.floor(Math.random() * 8)];
+              try {
+                var titlelist = DataBase.getDataBase('Z '+sender+ 'is title').split('\n');
+              }catch(e) {
+                var titlelist = [''];
+              }
+              if (titlelist.includes(RkDk3)) {
+                replier.reply('칭호가 중복으로 뽑혔습니다. 50%를 돌려드리겠습니다.');
+                DataBase.setDataBase('Z '+sender+ 'is money', money);
+              } else {
+              DataBase.setDataBase('Z '+sender+ 'is title', DataBase.getDataBase('Z '+sender+ 'is title')+'\n'+RkDk3);
+              replier.reply(sender+'님이 뽑으신 칭호는 "'+RkDk3+'" 입니다.');
+              }
+             } else if (titlerendomNum4.includes(RkDk)) {
+              let RkDk4 = title4[Math.floor(Math.random() * 7)];
+              try {
+                var titlelist = DataBase.getDataBase('Z '+sender+ 'is title').split('\n');
+              }catch(e) {
+                var titlelist = [''];
+              }
+              if (titlelist.includes(RkDk4)) {
+                replier.reply('칭호가 중복으로 뽑혔습니다. 50%를 돌려드리겠습니다.');
+                DataBase.setDataBase('Z '+sender+ 'is money', money);
+              } else {
+              DataBase.setDataBase('Z '+sender+ 'is title', DataBase.getDataBase('Z '+sender+ 'is title')+'\n'+RkDk4);
+              replier.reply(sender+'님이 뽑으신 칭호는 "'+RkDk4+'" 입니다.');
+              }
+             } else if (titlerendomNum5.includes(RkDk)) {
+               let RkDk5 = title5[Math.floor(Math.random() * 6)];
+               try {
+                var titlelist = DataBase.getDataBase('Z '+sender+ 'is title').split('\n');
+              }catch(e) {
+                var titlelist = [''];
+              }
+              if (titlelist.includes(RkDk1)) {
+                replier.reply('칭호가 중복으로 뽑혔습니다. 50%를 돌려드리겠습니다.');
+                DataBase.setDataBase('Z '+sender+ 'is money', money);
+              } else {
+               DataBase.setDataBase('Z '+sender+ 'is title', DataBase.getDataBase('Z '+sender+ 'is title')+'\n'+RkDk5);
+               replier.reply(sender+'님이 뽑으신 칭호는 "'+RkDk5+'" 입니다.');
+              }
+        }
+        } else if (money < 500) {
+          replier.reply('돈이 부족합니다. - 잔액 : '+money);
+        }
+      } else if (cutting == '내칭호') {
+         title = DataBase.getDataBase('Z '+sender+ 'is title');
+         replier.reply('[ '+sender+'님의 보유하신 칭호 ]\n'+allsee+'\n\n' + title);
+      }
+    }
   }
 }
 
