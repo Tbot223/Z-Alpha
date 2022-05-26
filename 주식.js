@@ -288,7 +288,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
         replier.reply('[ 칭호 목록 ]\n'+allsee+'\n일반 : '+title1+'\n\n고급 : '+title2+'\n\n희귀 : '+title3+'\n\n유일 : '+title4+'\n\n신화 : '+title5);
       } else if (cutting == '구매') {
         money = DataBase.getDataBase('Z '+sender+ 'is money');
-        if (money > 500) {
+        if (money >= 500) {
           DataBase.setDataBase('Z '+sender+ 'is money', money-500);
           let RkDk = titlerendomNum[Math.floor(Math.random() * 100)];
           if (titlerendomNum1.includes(RkDk)) {
@@ -362,80 +362,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
              replier.reply(sender+'님이 뽑으신 칭호는 "'+RkDk5+'" 입니다.');
             }
           }
-        } else if (money == 500) {
-           DataBase.setDataBase('Z '+sender+ 'is money', money-500);
-           let RkDk = titlerendomNum[Math.floor(Math.random() * 100)];
-            if (titlerendomNum1.includes(RkDk)) {
-              let RkDk1 = title1[Math.floor(Math.random() * 10)];
-              try {
-                var titlelist = DataBase.getDataBase('Z '+sender+ 'is title').split('\n');
-              }catch(e) {
-                var titlelist = [''];
-              }
-              if (titlelist.includes(RkDk1)) {
-                replier.reply('칭호가 중복으로 뽑혔습니다. 50%를 돌려드리겠습니다.');
-                DataBase.setDataBase('Z '+sender+ 'is money', money);
-              } else {
-              DataBase.setDataBase('Z '+sender+ 'is title', DataBase.getDataBase('Z '+sender+ 'is title')+'\n'+RkDk1);
-              replier.reply(sender+'님이 뽑으신 칭호는 "'+RkDk1+'" 입니다.');
-              }
-             } else if (titlerendomNum2.includes(RkDk)) {
-              let RkDk2 = title2[Math.floor(Math.random() * 10)];
-              try {
-                var titlelist = DataBase.getDataBase('Z '+sender+ 'is title').split('\n');
-              }catch(e) {
-                var titlelist = [''];
-              }
-              if (titlelist.includes(RkDk2)) {
-                replier.reply('칭호가 중복으로 뽑혔습니다. 50%를 돌려드리겠습니다.');
-                DataBase.setDataBase('Z '+sender+ 'is money', money)
-              } else {
-              DataBase.setDataBase('Z '+sender+ 'is title', DataBase.getDataBase('Z '+sender+ 'is title')+'\n'+RkDk2);
-              replier.reply(sender+'님이 뽑으신 칭호는 "'+RkDk2+'" 입니다.');
-              }
-             } else if (titlerendomNum3.includes(RkDk)) {
-              let RkDk3 = title3[Math.floor(Math.random() * 8)];
-              try {
-                var titlelist = DataBase.getDataBase('Z '+sender+ 'is title').split('\n');
-              }catch(e) {
-                var titlelist = [''];
-              }
-              if (titlelist.includes(RkDk3)) {
-                replier.reply('칭호가 중복으로 뽑혔습니다. 50%를 돌려드리겠습니다.');
-                DataBase.setDataBase('Z '+sender+ 'is money', money);
-              } else {
-              DataBase.setDataBase('Z '+sender+ 'is title', DataBase.getDataBase('Z '+sender+ 'is title')+'\n'+RkDk3);
-              replier.reply(sender+'님이 뽑으신 칭호는 "'+RkDk3+'" 입니다.');
-              }
-             } else if (titlerendomNum4.includes(RkDk)) {
-              let RkDk4 = title4[Math.floor(Math.random() * 7)];
-              try {
-                var titlelist = DataBase.getDataBase('Z '+sender+ 'is title').split('\n');
-              }catch(e) {
-                var titlelist = [''];
-              }
-              if (titlelist.includes(RkDk4)) {
-                replier.reply('칭호가 중복으로 뽑혔습니다. 50%를 돌려드리겠습니다.');
-                DataBase.setDataBase('Z '+sender+ 'is money', money);
-              } else {
-              DataBase.setDataBase('Z '+sender+ 'is title', DataBase.getDataBase('Z '+sender+ 'is title')+'\n'+RkDk4);
-              replier.reply(sender+'님이 뽑으신 칭호는 "'+RkDk4+'" 입니다.');
-              }
-             } else if (titlerendomNum5.includes(RkDk)) {
-               let RkDk5 = title5[Math.floor(Math.random() * 6)];
-               try {
-                var titlelist = DataBase.getDataBase('Z '+sender+ 'is title').split('\n');
-              }catch(e) {
-                var titlelist = [''];
-              }
-              if (titlelist.includes(RkDk1)) {
-                replier.reply('칭호가 중복으로 뽑혔습니다. 50%를 돌려드리겠습니다.');
-                DataBase.setDataBase('Z '+sender+ 'is money', money);
-              } else {
-               DataBase.setDataBase('Z '+sender+ 'is title', DataBase.getDataBase('Z '+sender+ 'is title')+'\n'+RkDk5);
-               replier.reply(sender+'님이 뽑으신 칭호는 "'+RkDk5+'" 입니다.');
-              }
-        }
         } else if (money < 500) {
           replier.reply('돈이 부족합니다. - 잔액 : '+money);
         }
