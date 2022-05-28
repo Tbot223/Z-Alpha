@@ -87,13 +87,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
       Y = To;
       FCab = 0;
     }
-    if (msg == ';?x?') {
-      let Dm = [1,2,3,4,5,6,7,8,9,10];
-      let Fm = Dm[Math.floor((Math.random() * 10))];
-      let Fk = Dm[Math.floor((Math.random() * 10))];
-      let Do = Fm*Fk;
-      replier.reply(Fm+'x'+Fk+'='+Do);
-    }
     if (msg == ';주가강제변동') {
       if (Zb == 0) {
       let Ro = randomN[Math.floor((Math.random() * 9))];
@@ -107,7 +100,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
       }
     }
     if (msg == ';도움말'||msg == ';help'||msg == ';?') {
-      replier.reply('[ ¿도움말? ]\n'+allsee+'\n<명령어 리스트>\n;가입\n;주가\n;내정보\n;구매\n;판매\n;일괄판매\n;주가강제변동\n;주가랜덤설정\n;주가재설정\n;code\n;안녕\n;EN+Num\n;?x?\n\n<패치노트>\n1.";구매"명령어가 ";구매 8" 이런식으로 쓸수 있게 되었습니다.(한번에 최대 10개 구매 가능)');
+      replier.reply('[ ¿도움말? ]\n'+allsee+'\n<명령어 리스트>\n;가입\n;주가\n;내정보\n;구매\n;판매\n;일괄판매\n;주가강제변동\n;주가랜덤설정\n;주가재설정\n;code\n;단축\n\n<패치노트>\n1.";단축"명령어가 추가되었습니다.');
     }
     if (msg == ';code') {
       replier.reply('https://bit.ly/3ON1onn');
@@ -125,16 +118,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
       replier.reply('주가가 랜덤으로 설정되었습니다.\n설정된 주가는 "' + Y + '$"입니다.');
       ZrandomTime = 1;
       }
-    }
-    if (msg == ';안녕') {
-      replier.reply(sender+'님 안녕하세요!');
-    }
-    if (msg == ';EN+Num') {
-      let Num = String(randomNum[Math.floor((Math.random() * 10))]);
-      let Num2 = String(randomNum[Math.floor((Math.random() * 10))]);
-      let En = EN[Math.floor((Math.random() * 26))];
-      let En2 = EN[Math.floor((Math.random() * 26))];
-      replier.reply(Num + Num2 + En + En2);
     }
     try {
       var joinbot = DataBase.getDataBase('Zo가입리스트001').split('\n');
@@ -186,21 +169,15 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
           var ZYPn = Number(message[1]);
           if (money < ZYPo) {
             replier.reply('돈이 부족합니다. - 현재 잔액 : ' + money);
-          } else if (money > ZYPo) {
+          } else if (money >= ZYPo) {
             DataBase.setDataBase('Z '+sender+ 'is money', money-ZYPo);
             DataBase.setDataBase('Z '+sender+ 'is Z', ZZuo+ZYPn);
             money = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
             ZZuo = Number(DataBase.getDataBase('Z '+sender+ 'is Z'));
-            replier.reply('성공적으로 구매되었습니다. \n 잔액 : ' + money + '\n보유한 주식 개수 : ' + ZZuo);
-          } else if (money == ZYPo) {
-            DataBase.setDataBase('Z '+sender+ 'is money', money-ZYPo);
-            DataBase.setDataBase('Z '+sender+ 'is Z', ZZuo+ZYPn);
-            money = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
-            ZZuo = Number(DataBase.getDataBase('Z '+sender+ 'is Z'));
-            replier.reply('성공적으로 구매되었습니다. \n 잔액 : ' + money + '\n보유한 주식 개수 : ' + ZZuo);
-          }
-        } else {
+            replier.reply('성공적으로 구매되었습니다. \n잔액 : ' + money + '\n보유한 주식 개수 : ' + ZZuo);
+          } else {
           replier.reply('가입을 하고 사용해주세요. (명령어 : ;가입)');
+          }
         }
       }
     }
@@ -368,6 +345,27 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
       } else if (cutting == '내칭호') {
          title = DataBase.getDataBase('Z '+sender+ 'is title');
          replier.reply('[ '+sender+'님의 보유하신 칭호 ]\n'+allsee+'\n\n' + title);
+      }
+    }
+    if (message[0] == ';도박') {
+      if (isGroupChat == true) {
+        replier.reply('갠톡에서 해주세요.');
+      } else if (isGroupChat == false) {
+        let cutting = msg.replace(';도박 ', '');
+        money = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
+        if (isNaN(Number(cutting))) {
+          replier.reply('숫자만 적어주세요.');
+        } else if (Number(cutting)<0) {
+          replier.reply('음수로 설정하실수 없습니다.');
+        } else if (Number(cutting)>money) {
+          replier.reply('돈이 부족합니다.');
+        } else {
+          let DPRo = Ch[Math.floor(Math.random() * 7)];
+          let DPRa = Number(DPRo*cutting);
+          DataBase.setDataBase('Z '+sender+ 'is money', money+DPRo);
+          let money1 = Number(DataBase.getDataBase('Z '+sender+ 'is money'));
+          replier.reply('[ '+sender+'님의 도박 결과 ]\n'+allsee+'\n투자금액 : '+cutting+'$\n\n돈 : '+money+'$ ➡️ '+money1+'$\n\n손익 : '+cutting+'$');
+        }
       }
     }
   }
